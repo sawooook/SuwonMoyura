@@ -24,7 +24,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'slim'
 gem 'chartkick'
 gem 'rails-i18n'
-gem "capistrano", :group => :development
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -37,6 +36,8 @@ group :development, :test do
 end
 
 group :development do
+  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano-rails", "~> 1.5", require: false
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
