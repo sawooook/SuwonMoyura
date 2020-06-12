@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/seuros/capistrano-puma.git
+  revision: 87bfd747bd43a19b5d214e0272b76fb723cf1f5f
+  specs:
+    capistrano3-puma (4.0.0)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (~> 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -75,7 +84,7 @@ GEM
     capistrano-rails (1.5.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-rbenv (2.1.4)
+    capistrano-rbenv (2.1.6)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
     capybara (3.32.2)
@@ -116,9 +125,9 @@ GEM
     minitest (5.14.1)
     msgpack (1.3.3)
     mysql2 (0.5.3)
-    net-scp (2.0.0)
-      net-ssh (>= 2.6.5, < 6.0.0)
-    net-ssh (5.2.0)
+    net-scp (3.0.0)
+      net-ssh (>= 2.6.5, < 7.0.0)
+    net-ssh (6.0.2)
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
@@ -194,7 +203,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
-    sshkit (1.20.0)
+    sshkit (1.21.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     temple (0.8.2)
@@ -235,6 +244,7 @@ DEPENDENCIES
   capistrano (~> 3.10)
   capistrano-rails (~> 1.5)
   capistrano-rbenv (~> 2.1)
+  capistrano3-puma!
   capybara (>= 2.15)
   chartkick
   jbuilder (~> 2.7)
