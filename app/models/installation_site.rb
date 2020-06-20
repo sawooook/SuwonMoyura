@@ -1,0 +1,2 @@
+class InstallationSite < ApplicationRecord
+end
