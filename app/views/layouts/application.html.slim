@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0"
+    title 수원 지역화폐 가능지역
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=02253520e88d743b21f74d35e548678a"
+  body
+    .container-fluid
+      .row
+        .col
+          = yield
