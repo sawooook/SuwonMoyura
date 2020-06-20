@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_125928) do
+ActiveRecord::Schema.define(version: 2020_06_20_093923) do
+
+  create_table "installation_sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.string "capital"
+    t.string "address"
+    t.string "phone"
+    t.float "lat"
+    t.float "lng"
+    t.boolean "card_currency"
+    t.boolean "mobile_currency"
+    t.boolean "paper_currency"
+    t.string "category"
+    t.text "extra"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
