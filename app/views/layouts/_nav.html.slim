@@ -1,0 +1,8 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  a.navbar-brand href="#"
+    ' 수원 지역화페 가맹점
+  button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    span.navbar-toggler-icon
+  .collapse.navbar-collapse#navbarSupportedContent
+    ul.navbar-nav.mr-auto
+      li.nav-item= link_to "가맹점 보러가기", sites_path, class: "nav-link #{controller.controller_name == "sites" ? "active" : "" }"
