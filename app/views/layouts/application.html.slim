@@ -8,10 +8,10 @@ html
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=02253520e88d743b21f74d35e548678a"
+    script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=02253520e88d743b21f74d35e548678a&libraries=clusterer"
   body
     = render partial: "layouts/nav"
     .container-fluid
       .row
         .col
-          = yield
+          = content_for?(:content) ? yield(:content) : yield

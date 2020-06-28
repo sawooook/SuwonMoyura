@@ -25,7 +25,7 @@ gem 'slim'
 gem 'chartkick'
 gem 'rails-i18n'
 gem 'httparty'
-
+gem 'geocoder'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
