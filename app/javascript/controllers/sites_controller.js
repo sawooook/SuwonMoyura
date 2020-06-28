@@ -11,27 +11,27 @@ export default class extends Controller{
 
         //- view에 카카오 지도를 뿌림
         var Cheight = $(window).height();
-        $('#map-size').css({'height':Cheight+'px'}); //-> Y좌표 full화면을 못구하겠어서 제이쿼리를 통해 화면에맞는 높이 사이즈를 구하도록
+        $('#map-size').css({'height':Cheight+'px'});
 
-
+        //- 지도 초창기 셋팅
         var options = {
             center: new kakao.maps.LatLng(37.2788, 126.953),
-            level: 3
+            level: 2,
+            maxLevel: 4
         };
 
+        //- 맵성 객체 생성
         var map = new kakao.maps.Map(this.mapTarget, options)
 
 
         var clusterer = new kakao.maps.MarkerClusterer({
-            map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
-            averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-            minLevel: 10 // 클러스터 할 최소 지도 레벨
+            map: map,
+            averageCenter: true,
+            minLevel: 3
         });
-
 
         //- 화면 이동시 해당 화면의 좌표값을 받아옵니다.
         kakao.maps.event.addListener(map, 'dragend', function() {
-
             var latlng = map.getCenter();
             var x = latlng.getLat()
             var y = latlng.getLng()
@@ -45,7 +45,6 @@ export default class extends Controller{
                 success: function(args) {
                     console.log(args)
                     var parseSite  = args.data
-
                     //- 받아온 데이터를 for문을 이용하여 마커를 추가해준다
                     parseSite.forEach(function (k) {
                         var markerPosition  = new kakao.maps.LatLng(k["lat"], k["lng"]);
@@ -53,8 +52,6 @@ export default class extends Controller{
                             position: markerPosition
                         });
                         marker.setMap(map);
-
-
 
                         var iwContent = `<div style="padding:5px;">${k["name"]}</div>`
                         var infowindow = new kakao.maps.InfoWindow({
@@ -71,7 +68,6 @@ export default class extends Controller{
                         markers.push(marker)
                     })
                     clusterer.addMarkers(markers)
-
                 },
                 error : function(xhr, status, error){
                     //요청에 실패하면 에러코드 출력

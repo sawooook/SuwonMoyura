@@ -10,7 +10,7 @@ class Site < ApplicationRecord
   end
 
   def self.list_of_near_distance(lat, lng)
-    near([lat,lng], 0.1)
+    near([lat, lng], 0.2)
   end
 
   #- Redis에 장소들의 데이터를 저장한다.
@@ -26,6 +26,7 @@ class Site < ApplicationRecord
   def as_json(option = {})
     {
       name: self.name,
+      address: self.address,
       lat: self.lat,
       lng: self.lng
     }
