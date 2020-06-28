@@ -9,6 +9,7 @@ class Site < ApplicationRecord
     where.not(lat: nil, lng: nil)
   end
 
+  #- 내 위치를 중심으로 근처에 있는 가맹점 리스트를 불러온다.
   def self.list_of_near_distance(lat, lng)
     near([lat, lng], 0.2)
   end
