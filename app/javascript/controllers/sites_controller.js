@@ -6,12 +6,12 @@ export default class extends Controller{
     }
 
     connect() {
-        //var markers = [];
+        var markers = [];
         this.loadMyLocation()
 
         //- view에 카카오 지도를 뿌림
         var Cheight = $(window).height();
-        $('#map-size').css({'height':Cheight+'px'}); //-> Y좌표 full화면을 못구하겠어서 제이쿼리를 통해 화면에맞는 높이 사이즈를 구하도록함
+        $('#map-size').css({'height':Cheight+'px'}); //-> Y좌표 full화면을 못구하겠어서 제이쿼리를 통해 화면에맞는 높이 사이즈를 구하도록
 
 
         var options = {
@@ -20,6 +20,13 @@ export default class extends Controller{
         };
 
         var map = new kakao.maps.Map(this.mapTarget, options)
+
+
+        var clusterer = new kakao.maps.MarkerClusterer({
+            map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+            averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+            minLevel: 10 // 클러스터 할 최소 지도 레벨
+        });
 
 
         //- 화면 이동시 해당 화면의 좌표값을 받아옵니다.
@@ -46,8 +53,25 @@ export default class extends Controller{
                             position: markerPosition
                         });
                         marker.setMap(map);
-                        //markers.push(marker)
+
+
+
+                        var iwContent = `<div style="padding:5px;">${k["name"]}</div>`
+                        var infowindow = new kakao.maps.InfoWindow({
+                            content : iwContent
+                        });
+                        kakao.maps.event.addListener(marker, 'mouseover', function() {
+                            // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+                            infowindow.open(map, marker);
+                        });
+                        kakao.maps.event.addListener(marker, 'mouseout', function() {
+                            // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+                            infowindow.close();
+                        });
+                        markers.push(marker)
                     })
+                    clusterer.addMarkers(markers)
+
                 },
                 error : function(xhr, status, error){
                     //요청에 실패하면 에러코드 출력
