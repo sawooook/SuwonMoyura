@@ -11,6 +11,11 @@ require("channels")
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 
+import '@fortawesome/fontawesome-free/js/fontawesome'
+import '@fortawesome/fontawesome-free/js/solid'
+import '@fortawesome/fontawesome-free/js/regular'
+import '@fortawesome/fontawesome-free/js/brands'
+
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
 import './src/application'// Uncomment to copy all static images under ../images to the output folder and reference
