@@ -2,3 +2,14 @@ div data-controller="sites"
   .row
     #map-size data-target="sites.map"
     i.far.fa-compass.fa-5x
+    .row
+      #myModal.modal role="dialog" tabindex="-1"
+        .modal-dialog.modal-dialog-centered.modal-sm
+          .modal-content
+            button.close aria-label="Close" data-dismiss="modal" type="button"
+              span aria-hidden="true"
+            .modal-body
+              h4.mt-2.font-weight-bolder.mb-3 파티마내과
+              small.mb-3.text-center 경기도 수원시 권선구 세권로304번길 62
+              br
+              .mt-4.button.btn.btn-secondary.w-100 data-dismiss="modal" type="button" 닫기

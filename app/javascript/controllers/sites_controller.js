@@ -2,7 +2,7 @@ import {Controller} from "stimulus"
 
 export default class extends Controller{
     static get targets() {
-        return [ "map" ]
+        return [ "map", "modal"]
     }
 
     connect() {
@@ -45,6 +45,7 @@ export default class extends Controller{
                 success: function(args) {
                     console.log(args)
                     var parseSite  = args.data
+
                     //- 받아온 데이터를 for문을 이용하여 마커를 추가해준다
                     parseSite.forEach(function (k) {
                         var markerPosition  = new kakao.maps.LatLng(k["lat"], k["lng"]);
@@ -57,14 +58,9 @@ export default class extends Controller{
                         var infowindow = new kakao.maps.InfoWindow({
                             content : iwContent
                         });
-                        kakao.maps.event.addListener(marker, 'mouseover', function() {
-                            // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-                            infowindow.open(map, marker);
-                        });
-                        kakao.maps.event.addListener(marker, 'mouseout', function() {
-                            // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-                            infowindow.close();
-                        });
+                        kakao.maps.event.addListener(marker, 'click', function (e) {
+                            $('#myModal').modal('show');
+                        })
                         markers.push(marker)
                     })
                     clusterer.addMarkers(markers)
