@@ -1,7 +1,11 @@
 div data-controller="sites"
   .row
+    #progressBar.spinner
+      .rect1.mr-2
+      .rect2.mr-2
+      .rect3.mr-2
+      .rect4.mt-2
     #map-size data-target="sites.map"
-    i.far.fa-compass.fa-5x
     .row
       #myModal.modal role="dialog" tabindex="-1"
         .modal-dialog.modal-dialog-centered.modal-sm
@@ -9,7 +13,7 @@ div data-controller="sites"
             button.close aria-label="Close" data-dismiss="modal" type="button"
               span aria-hidden="true"
             .modal-body
-              h4.mt-2.font-weight-bolder.mb-3 파티마내과
-              small.mb-3.text-center 경기도 수원시 권선구 세권로304번길 62
+              h5.mt-2.font-weight-bolder.mb-3 data-target="sites.title" 파티마내과
+              small.mb-3.text-center data-target="sites.address"경기도 수원시 권선구 세권로304번길 62
               br
-              .mt-4.button.btn.btn-secondary.w-100 data-dismiss="modal" type="button" 닫기
+              .mt-4.button.btn.main-color.w-100.text-white.font-weight-normal data-dismiss="modal" type="button" 길찾기
