@@ -1,9 +1,12 @@
-.row.col-lg-3.col-md-6.col-sm-12.mt-3
-  .wrap
-    .search
-      input.searchTerm.font-weight-normal placeholder=("찾으려는 매장을 검색해보세요!")
-      button.searchButton type="submit"
-        i.fa.fa-search
-.row
-  .mt-5.w-100
-    hr.p-5.text-black
+div data-controller="search" data-item-search-url="#{site_search_sites_path}"
+  .row.col-lg-3.col-md-6.col-sm-12.mt-3
+    .wrap
+      .search
+        input.searchTerm.font-weight-normal data-target="search.query" data-action="keyup->search#searchPlaceThroughQuery" value= params[:query] type="text" placeholder=("찾으려는 매장을 검색해보세요!")
+        button.searchButton type="submit"
+          i.fa.fa-search
+  .row
+    .mt-5.w-100
+      hr.p-3.text-black
+  .row
+    = render partial: 'sites_list', locals: {sites: @sites}

@@ -12,4 +12,15 @@ class SitesController < ApplicationController
     load_site = Site.list_of_near_distance(sites_lat, sites_lng)
     render json: ResponseWrapper.wrap_as_list(load_site.list_of_site.as_json), status: :ok
   end
+
+  def search
+    @sites = []
+  end
+
+  def site_search
+    @sites = Site.all
+    @sites = @sites.query(params[:query], params[:query]) if params[:query].present?
+
+    render partial: 'sites_list'
+  end
 end

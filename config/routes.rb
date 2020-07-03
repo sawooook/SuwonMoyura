@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :sites do
     collection do
       get :search_sites
+      get :search
+      get :site_search
     end
   end
 end

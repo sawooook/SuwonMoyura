@@ -4,6 +4,11 @@ class Site < ApplicationRecord
   reverse_geocoded_by :lat, :lng
   after_validation :reverse_geocode
 
+
+  def self.query(name, address)
+    where("name LIKE ? OR address LIKE ?", "%#{name}%", "%#{address}%").limit(25)
+  end
+
   #- 위치가 없는 장소들은 제외
   def self.list_of_site
     where.not(lat: nil, lng: nil)
