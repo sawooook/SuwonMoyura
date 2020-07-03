@@ -1,4 +1,11 @@
 div data-controller="sites"
+  .row.col-lg-3.col-md-6.col-sm-12
+    = link_to search_sites_path
+      .wrap.mt-3
+        .search
+          input.searchTerm.font-weight-normal placeholder=("    찾으려는 매장을 검색해보세요!")
+          button.searchButton type="submit"
+            i.fa.fa-search
   .row
     #progressBar.spinner
       .rect1.mr-2

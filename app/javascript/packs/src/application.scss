@@ -71,3 +71,48 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
        -webkit-transform: scaleY(1.0);
      }
 }
+
+
+
+
+.search {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  z-index: 6;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #FFBF00;
+  border-right: none;
+  padding: 5px;
+  height: 50px;
+  border-radius: 15px 0 0 15px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #FFBF00;
+}
+
+.searchButton {
+  width: 40px;
+  height: 50px;
+  border: 3px solid #FFBF00;
+  background: #FFBF00;
+  color: #fff;
+  border-radius: 0 15px 15px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  z-index: 6;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+}
