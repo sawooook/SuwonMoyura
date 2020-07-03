@@ -30,13 +30,6 @@ export default class extends Controller{
         //- 맵성 객체 생성
         var map = new kakao.maps.Map(this.mapTarget, options)
 
-
-        var clusterer = new kakao.maps.MarkerClusterer({
-            map: map,
-            averageCenter: true,
-            minLevel: 3
-        });
-
         //- 화면 이동시 해당 화면의 좌표값을 받아옵니다.
         kakao.maps.event.addListener(map, 'dragend', function() {
             var latlng = map.getCenter();
@@ -59,9 +52,8 @@ export default class extends Controller{
                     for (var index = 0; index < markers.length; index++){
                         markers[index].setMap(null)
                     }
-
                     var parseSite  = args.data
-                    clusterer.clear()
+
                     //- 받아온 데이터를 for문을 이용하여 마커를 추가해준다
                     parseSite.forEach(function (k) {
                         var markerPosition  = new kakao.maps.LatLng(k["lat"], k["lng"]);
@@ -75,20 +67,16 @@ export default class extends Controller{
                             image: markerImage // 마커이미지 설정
                         });
 
-
-
                         marker.setMap(map);
-
+                        markers.push(marker)
 
                         kakao.maps.event.addListener(marker, 'click', function (e) {
                             controller.titleTarget.innerHTML = markerTitle
                             controller.addressTarget.innerHTML = marketAddress
                             $('#myModal').modal('show');
+                            map.panTo(markerPosition);
                         })
-
-                        markers.push(marker)
                         $('#progressBar').fadeOut()
-
                     })
                 },
                 error : function(xhr, status, error){
@@ -98,6 +86,8 @@ export default class extends Controller{
             });
         });
     }
+
+
 
     //- geolocation을 이용하여 나의 위치를 받아온다
     loadMyLocation(){
