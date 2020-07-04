@@ -20,7 +20,11 @@ div data-controller="sites"
             button.close aria-label="Close" data-dismiss="modal" type="button"
               span aria-hidden="true"
             .modal-body
-              h5.mt-2.font-weight-bolder.mb-3 data-target="sites.title" 파티마내과
+              .mt-2.font-weight-bolder.mb-3 data-target="sites.title" 파티마내과
               small.mb-3.text-center data-target="sites.address"경기도 수원시 권선구 세권로304번길 62
               br
-              .mt-4.button.btn.main-color.w-100.text-white.font-weight-normal data-dismiss="modal" type="button" 길찾기
+              .mt-4 data-action="click->sites#loadSearchToKakaoMap"
+                = link_to "길찾기", "href", id: "searchButton", class: "button btn main-color w-100 text-white font-weight-normal"
+
+                //.mt-4.button.btn.main-color.w-100.text-white.font-weight-normal data-dismiss="modal" type="button"
+

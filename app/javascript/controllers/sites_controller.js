@@ -2,7 +2,7 @@ import {Controller} from "stimulus"
 
 export default class extends Controller{
     static get targets() {
-        return [ "map", "modal", "title", "address"]
+        return [ "map", "modal", "title", "address", "loadSearch"]
     }
 
     connect() {
@@ -100,6 +100,14 @@ export default class extends Controller{
             maximumAge: 0,
             timeout: Infinity
         });
+    }
+
+
+    loadSearchToKakaoMap(){
+        var siteAddress = this.addressTarget
+        var searchButton = document.getElementById("searchButton")
+        console.log(siteAddress.innerText)
+        searchButton.href = `https://map.kakao.com/link/search/${siteAddress.innerText}`
     }
 
     clearMarker(markers){
