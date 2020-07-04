@@ -1,11 +1,10 @@
 class Mask
   BASE_URL = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json"
 
-  def self.call_mask_api
-    request = {
-
-    }
-
+  def self.call_mask_api(lat, lng)
+    response = HTTParty.get("https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?lat=#{lat}&lng=#{lng}&m=5000")
+    pharmacy_list = JSON(response.body)
+    puts pharmacy_list
   end
 end
 
