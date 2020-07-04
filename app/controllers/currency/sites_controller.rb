@@ -1,4 +1,4 @@
-class SitesController < ApplicationController
+class Currency::SitesController < Currency::ApplicationController
 
   def index
     @sites = Site.load_cached_site
@@ -14,13 +14,12 @@ class SitesController < ApplicationController
   end
 
   def search
-    @sites = []
+    @sites = Site.all.limit(25)
   end
 
   def site_search
-    @sites = Site.all
-    @sites = @sites.query(params[:query], params[:query]) if params[:query].present?
+    @sites = Site.all.limit(10)
 
-    render partial: 'sites_list'
+    render partial: "sites_list", locals: {sites: @sites}
   end
 end
