@@ -10,5 +10,8 @@ Rails.application.routes.draw do
       end
     end
   end
+  namespace :mask do
+    resources :pharmacys
+  end
   root to: "main#index"
 end

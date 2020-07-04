@@ -1,0 +1,30 @@
+div data-controller="sites"
+  .row.col-lg-3.col-md-6.col-sm-12
+    = link_to search_currency_sites_path
+      .wrap.mt-3
+        .search
+          input.searchTerm.font-weight-normal placeholder=("찾으려는 매장을 검색해보세요!")
+          button.searchButton type="submit"
+            i.fa.fa-search
+  .row
+    #progressBar.spinner
+      .rect1.mr-2
+      .rect2.mr-2
+      .rect3.mr-2
+      .rect4.mt-2
+    #map-size data-target="sites.map"
+    .row
+      #myModal.modal role="dialog" tabindex="-1"
+        .modal-dialog.modal-dialog-centered.modal-sm
+          .modal-content
+            button.close aria-label="Close" data-dismiss="modal" type="button"
+              span aria-hidden="true"
+            .modal-body
+              .mt-2.font-weight-bolder.mb-3 data-target="sites.title" 파티마내과
+              small.mb-3.text-center data-target="sites.address"경기도 수원시 권선구 세권로304번길 62
+              br
+              .mt-4 data-action="click->sites#loadSearchToKakaoMap"
+                = link_to "길찾기", "href", id: "searchButton", class: "button btn main-color w-100 text-white font-weight-normal"
+
+                  //.mt-4.button.btn.main-color.w-100.text-white.font-weight-normal data-dismiss="modal" type="button"
+
