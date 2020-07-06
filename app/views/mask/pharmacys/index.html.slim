@@ -1,5 +1,5 @@
-div data-controller="sites"
-  .row.col-lg-3.col-md-6.col-sm-12
+div data-controller="mask"
+  /.row.col-lg-3.col-md-6.col-sm-12
     = link_to search_currency_sites_path
       .wrap.mt-3
         .search
@@ -12,18 +12,29 @@ div data-controller="sites"
       .rect2.mr-2
       .rect3.mr-2
       .rect4.mt-2
-    #map-size data-target="sites.map"
+    #map-size data-target="mask.map"
     .row
       #myModal.modal role="dialog" tabindex="-1"
-        .modal-dialog.modal-dialog-centered.modal-sm
+        .modal-dialog.modal-dialog-centered
           .modal-content
             button.close aria-label="Close" data-dismiss="modal" type="button"
               span aria-hidden="true"
             .modal-body
-              .mt-2.font-weight-bolder.mb-3 data-target="sites.title" 파티마내과
-              small.mb-3.text-center data-target="sites.address"경기도 수원시 권선구 세권로304번길 62
+              .d-flex.flex-column
+                h4.mt-3.mb-4.font-weight-bolder.mb-3 data-target="mask.title" 파티마내과
+                .d-flex.flex-row
+                  h6.mb-3.font-weight-bolder 마스크 재고
+                  h6.mb-3.ml-auto.mr-1 data-target="mask.remainStat"
+                .d-flex.flex-row
+                  h6.mb-3.font-weight-bolder 마스크 입고 시간
+                  h6.mb-3.ml-auto.mr-1 data-target="mask.stockAt" 2020-06-01
+                .d-flex.flex-row
+                  h6.mb-3.font-weight-bolder 마지막 업데이트
+                  h6.mb-3.ml-auto.mr-1 data-target="mask.createdAt" 2020-06-01
+                small.mt-2.text-center data-target="mask.address"경기도 수원시 권선구 세권로304번길 62
               br
-              .mt-4 data-action="click->sites#loadSearchToKakaoMap"
+
+              .mt-2 data-action="click->mask#loadSearchToKakaoMap"
                 = link_to "길찾기", "href", id: "searchButton", class: "button btn main-color w-100 text-white font-weight-normal"
 
                   //.mt-4.button.btn.main-color.w-100.text-white.font-weight-normal data-dismiss="modal" type="button"

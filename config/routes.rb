@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     end
   end
   namespace :mask do
-    resources :pharmacys
+    resources :pharmacys do
+      collection do
+        get :load_pharmacy
+      end
+    end
   end
   root to: "main#index"
 end
