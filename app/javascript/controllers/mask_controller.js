@@ -49,7 +49,6 @@ export default class extends Controller {
 
                     response.forEach(function (pharmacy) {
 
-
                         let markerPosition  = new kakao.maps.LatLng(pharmacy["lat"], pharmacy["lng"]);
                         let markerTitle = pharmacy["name"]
                         let marketAddress = pharmacy["addr"]
@@ -74,9 +73,6 @@ export default class extends Controller {
                                 remainStat = "재고부족 (2개 ~ 30개)";
                                 break;
                         }
-                        console.log("=============")
-                        console.log(remainStat)
-
 
                         let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
 
@@ -110,7 +106,12 @@ export default class extends Controller {
                 }
             })
         });
-
-
+    }
+    
+    loadSearchToKakaoMap(){
+        var siteAddress = this.addressTarget
+        var searchButton = document.getElementById("searchButton")
+        console.log(siteAddress.innerText)
+        searchButton.href = `https://map.kakao.com/link/search/${siteAddress.innerText}`
     }
 }
