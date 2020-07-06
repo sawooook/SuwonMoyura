@@ -18,7 +18,8 @@ class Currency::SitesController < Currency::ApplicationController
   end
 
   def site_search
-    @sites = Site.all.limit(10)
+
+    @sites = Site.query(params[:query],params[:query])
 
     render partial: "sites_list", locals: {sites: @sites}
   end
