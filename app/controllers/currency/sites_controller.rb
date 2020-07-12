@@ -14,13 +14,11 @@ class Currency::SitesController < Currency::ApplicationController
   end
 
   def search
-    @sites = Site.all.limit(25)
+    @sites = Site.sites_for_address_presense.limit(25)
   end
 
   def site_search
-
-    @sites = Site.query(params[:query],params[:query])
-
+    @sites = Site.sites_for_address_presense.query(params[:query],params[:query])
     render partial: "sites_list", locals: {sites: @sites}
   end
 end

@@ -1,4 +1,7 @@
 - @sites.each do |site|
-  li.list-group-item
-    .row
-      = site.name
+  = link_to "https://map.kakao.com/link/search/#{site.address}"
+    li.list-group-item.text-dark
+      .row.mb-3
+        = site.name
+      small.row
+        = site.address

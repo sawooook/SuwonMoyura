@@ -7,7 +7,6 @@ div data-controller="search" data-item-search-url="#{search_sites_currency_sites
           i.fa.fa-search
   .row
     .mt-5.w-100
-      hr.p-3.text-black
+      hr.p-1.text-black
   div data-target="search.content"
-    li.list-group-item.list-group-item-dark.font-weight-bold.d-none.d-lg-block
-      = render partial: "sites_list", locals: {sites: @sites}
+    = render partial: "sites_list", locals: {sites: @sites}

@@ -9,6 +9,10 @@ class Site < ApplicationRecord
     where("name LIKE ? OR address LIKE ?", "%#{name}%", "%#{address}%").limit(25)
   end
 
+  def self.sites_for_address_presense
+    where.not(address: nil)
+  end
+
   #- 위치가 없는 장소들은 제외
   def self.list_of_site
     where.not(lat: nil, lng: nil)
