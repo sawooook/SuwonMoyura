@@ -6,12 +6,14 @@ export default class extends Controller{
     }
 
     connect() {
+        let lat = null
+        let lng = null
+        this.loadMyLocation(lat, lng)
+
         var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다
             imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
             imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-        var markers = [];
-        this.loadMyLocation()
+        let markers = [];
         let controller = this
 
         $('#progressBar').fadeOut()
@@ -22,7 +24,7 @@ export default class extends Controller{
 
         //- 지도 초창기 셋팅
         var options = {
-            center: new kakao.maps.LatLng(37.2788, 126.953),
+            center: new kakao.maps.LatLng(lat, lng),
             level: 2,
             maxLevel: 3
         };
@@ -90,8 +92,10 @@ export default class extends Controller{
 
 
     //- geolocation을 이용하여 나의 위치를 받아온다
-    loadMyLocation(){
+    loadMyLocation(lat, lng){
         navigator.geolocation.getCurrentPosition(function(position) {
+            lat = position.coords.latitude;
+            lng = position.coords.longitude;
             console.log(position.coords.latitude + ' ' + position.coords.longitude);
         }, function(error) {
             console.error(error);
